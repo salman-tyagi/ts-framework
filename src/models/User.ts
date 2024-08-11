@@ -7,6 +7,8 @@ interface UserProps {
 type Callback = () => {};
 
 class User {
+  events: { [event: string]: Callback[] };
+
   constructor(private data: UserProps) {}
 
   get(propName: string): string | number {

@@ -4,10 +4,10 @@ interface UserProps {
 }
 
 // Type alias as a TYPE, to make understand programmers
-type Callback = () => {};
+type Callback = () => void;
 
 class User {
-  events: { [event: string]: Callback[] };
+  events: { [event: string]: Callback[] } = {};
 
   constructor(private data: UserProps) {}
 
@@ -19,8 +19,12 @@ class User {
     Object.assign(this.data, update);
   }
 
-  on(eventName: string, callback: Callback) {
-    
+  on(eventName: string, callback: Callback): void {
+    // this.events[eventName]  = this.events[eventName] || [];
+    const handlers = this.events[eventName] || [];
+    handlers.push(callback);
+
+    this.events[eventName] = handlers;
   }
 }
 

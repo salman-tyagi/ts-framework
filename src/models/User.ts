@@ -3,6 +3,9 @@ interface UserProps {
   age?: number;
 }
 
+// Type alias as a TYPE, to make understand programmers
+type Callback = () => {};
+
 class User {
   constructor(private data: UserProps) {}
 
@@ -12,6 +15,10 @@ class User {
 
   set(update: UserProps): void {
     Object.assign(this.data, update);
+  }
+
+  on(eventName: string, callback: Callback) {
+    
   }
 }
 

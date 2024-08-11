@@ -49,6 +49,24 @@ class User {
         this.set(res.data);
       });
   }
+
+  save(): void {
+    const id = this.get('id');
+
+    if (!id) {
+      axios
+        .post('http://localhost:3000/users', this.data)
+        .then((res: AxiosResponse) => {
+          this.set(res.data);
+        });
+    } else {
+      axios
+        .patch(`http://localhost:3000/users/${id}`, this.data)
+        .then((res: AxiosResponse) => {
+          this.set(res.data);
+        });
+    }
+  }
 }
 
 export default User;

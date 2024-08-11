@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Tony Start",
+      "age": 40
+    },
+    {
+      "name": "Loki",
+      "age": 43,
+      "id": 2
+    },
+    {
+      "name": "Captain America",
+      "age": 34,
+      "id": 3
+    }
+  ]
+}

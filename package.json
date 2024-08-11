@@ -3,12 +3,19 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html"
+    "start:server": "json-server -w src/db.json",
+    "start:parcel": "parcel index.html"
   },
   "author": "",
   "license": "ISC",
   "description": "",
+  "dependencies": {
+    "axios": "^1.7.3"
+  },
   "devDependencies": {
-    "parcel": "^2.12.0"
+    "buffer": "^6.0.3",
+    "json-server": "^0.17.4",
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
   }
 }

@@ -1,21 +1,23 @@
 import axios, { AxiosPromise } from 'axios';
 
 interface HasId {
-  id: number;
+  id?: number;
 }
 
 class Sync<T extends HasId> {
+  constructor(public API_URL: string) {}
+
   fetch(id: number): AxiosPromise {
-    return axios.get(`http://localhost:3000/users/${id}`);
+    return axios.get(`${this.API_URL}/${id}`);
   }
 
   save(data: T): AxiosPromise {
     const { id } = data;
 
     if (!id) {
-      return axios.post('http://localhost:3000/users', data);
+      return axios.post(this.API_URL, data);
     } else {
-      return axios.patch(`http://localhost:3000/users/${id}`, data);
+      return axios.patch(`${this.API_URL}/${id}`, data);
     }
   }
 }

@@ -12,8 +12,6 @@ export interface UserProps {
 class User {
   public events: Eventing = new Eventing();
   public sync: Sync<UserProps> = new Sync<UserProps>(API_URL);
-
-  
 }
 
 export default User;

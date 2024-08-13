@@ -12,16 +12,6 @@ export interface UserProps {
 class User {
   public events: Eventing = new Eventing();
   public sync: Sync<UserProps> = new Sync<UserProps>(API_URL);
-
-  constructor(public data: UserProps) {}
-
-  get(propName: string): string | number {
-    return this.data[propName];
-  }
-
-  set(update: UserProps): void {
-    Object.assign(this.data, update);
-  }
 }
 
 export default User;

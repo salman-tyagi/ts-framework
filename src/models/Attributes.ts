@@ -1,5 +1,3 @@
-import { UserProps } from './User';
-
 class Attributes<T extends object> {
   constructor(public data: T) {}
 
@@ -13,9 +11,3 @@ class Attributes<T extends object> {
 }
 
 export default Attributes;
-
-const attrs = new Attributes<UserProps>({ name: 'myName', age: 20 });
-
-const id = attrs.get('id');
-const name = attrs.get('name');
-const age = attrs.get('age');

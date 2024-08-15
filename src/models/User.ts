@@ -18,23 +18,18 @@ class User {
   constructor(attrs: UserProps) {
     this.attrs = new Attributes<UserProps>(attrs);
   }
+
+  get on() {
+    return this.events.on;
+  }
+
+  get trigger() {
+    return this.events.trigger;
+  }
+
+  get get() {
+    return this.attrs.get;
+  }
 }
 
 export default User;
-
-class Person {
-  firstName: string;
-  lastName: string;
-
-  constructor(firstName: string, lastName: string) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-
-  get fullName(): string {
-    return `${this.firstName} ${this.lastName}`;
-  }
-}
-
-const person = new Person('firstName', 'lastName');
-console.log(person.fullName);

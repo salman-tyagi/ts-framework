@@ -30,6 +30,11 @@ class User {
   get get() {
     return this.attrs.get;
   }
+
+  set(update: UserProps): void {
+    this.attrs.set(update);
+    this.trigger('change');
+  }
 }
 
 export default User;

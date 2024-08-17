@@ -21,6 +21,4 @@ class User extends Model<UserProps> {
   }
 }
 
-const user = User.buildUser({});
-
 export default User;

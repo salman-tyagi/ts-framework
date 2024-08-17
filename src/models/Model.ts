@@ -27,13 +27,15 @@ class Model<T extends HasId> {
     private sync: Sync<T>
   ) {}
 
-  get on() {
-    return this.events.on;
-  }
+  //   get on() {
+  //     return this.events.on;
+  //   }
+  on = this.events.on;
 
-  get trigger() {
-    return this.events.trigger;
-  }
+  //   get trigger() {
+  //     return this.events.trigger;
+  //   }
+  trigger = this.events.trigger;
 
   get get() {
     return this.attributes.get;

@@ -3,29 +3,25 @@ import User from '../models/User';
 class UserForm {
   constructor(public parent: Element, public model: User) {}
 
-  eventsMap(): { [key: string]: () => void } {
+  eventsMap() {
     return {
-      'click:button': this.onButtonClick,
-      'mouseenter:h1': this.onHoverH1,
+      'click:.set-age': this.setAgeOnClick,
     };
   }
 
-  onButtonClick(): void {
-    console.log('Button clicked');
-  }
-
-  onHoverH1(): void {
-    console.log('h1 hovered');
-  }
+  setAgeOnClick = (): void => {
+    this.model.setRandomAge();
+    this.render();
+  };
 
   bindEvents(fragment: DocumentFragment): void {
     const eventsMap = this.eventsMap();
 
-    for (const eventKey in eventsMap) {
-      const [eventName, selector] = eventKey.split(':');
+    for (const events in eventsMap) {
+      const [eventName, selector] = events.split(':');
 
       fragment.querySelectorAll(selector).forEach(element => {
-        element.addEventListener(eventName, eventsMap[eventKey]);
+        element.addEventListener(eventName, eventsMap[events]);
       });
     }
   }
@@ -38,11 +34,14 @@ class UserForm {
         <p>Age: ${this.model.get('age')}</p>
         <input />
         <button>Click me</button>
+        <button class='set-age'>Set random age</button>
       </div>
     `;
   }
 
   render(): void {
+    this.parent.innerHTML = '';
+
     const templateElement = document.createElement('template');
     templateElement.innerHTML = this.template();
 

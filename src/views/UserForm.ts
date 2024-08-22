@@ -3,14 +3,23 @@ import User from '../models/User';
 class UserForm {
   constructor(public parent: Element, public model: User) {}
 
-  eventsMap() {
+  eventsMap(): { [key: string]: () => void } {
     return {
       'click:.set-age': this.setAgeOnClick,
+      'click:.set-name': this.setNameOnClick,
     };
   }
 
   setAgeOnClick = (): void => {
     this.model.setRandomAge();
+    this.render();
+  };
+
+  setNameOnClick = (): void => {
+    const inputElement = this.parent.querySelector('input');
+    const name = inputElement?.value;
+
+    this.model.set({ name });
     this.render();
   };
 
@@ -32,8 +41,8 @@ class UserForm {
         <h1>User form</h1>
         <p>Name: ${this.model.get('name')}</p>
         <p>Age: ${this.model.get('age')}</p>
-        <input />
-        <button>Click me</button>
+        <input type='text' />
+        <button class='set-name'>Update Name</button>
         <button class='set-age'>Set random age</button>
       </div>
     `;

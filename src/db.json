@@ -1,29 +1,19 @@
 {
-  "users": [
+  "posts": [
     {
-      "name": "myName",
-      "age": 20,
-      "id": 1
-    },
-    {
-      "name": "yourName",
-      "age": 30,
-      "id": 2
-    },
-    {
-      "name": "superName",
-      "age": 40,
-      "id": 3
-    },
-    {
-      "name": "4th User",
-      "age": 30,
-      "id": 4
-    },
-    {
-      "name": "4th User",
-      "age": 30,
-      "id": 5
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
     }
-  ]
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }

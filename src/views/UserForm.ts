@@ -1,15 +1,7 @@
 import User from '../models/User';
 
 class UserForm {
-  constructor(public parent: Element, public model: User) {
-    this.bindModel();
-  }
-
-  bindModel(): void {
-    this.model.on('change', () => {
-      this.render();
-    });
-  }
+  
 
   eventsMap(): { [key: string]: () => void } {
     return {
@@ -29,17 +21,7 @@ class UserForm {
     this.model.set({ name });
   };
 
-  bindEvents(fragment: DocumentFragment): void {
-    const eventsMap = this.eventsMap();
-
-    for (const events in eventsMap) {
-      const [eventName, selector] = events.split(':');
-
-      fragment.querySelectorAll(selector).forEach(element => {
-        element.addEventListener(eventName, eventsMap[events]);
-      });
-    }
-  }
+ 
 
   template(): string {
     return `
@@ -54,15 +36,7 @@ class UserForm {
     `;
   }
 
-  render(): void {
-    this.parent.innerHTML = '';
-
-    const templateElement = document.createElement('template');
-    templateElement.innerHTML = this.template();
-
-    this.bindEvents(templateElement.content);
-    this.parent.append(templateElement.content);
-  }
+  
 }
 
 export default UserForm;

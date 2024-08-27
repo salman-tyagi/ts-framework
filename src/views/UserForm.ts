@@ -1,7 +1,15 @@
 import User from '../models/User';
 
 class UserForm {
-  constructor(public parent: Element, public model: User) {}
+  constructor(public parent: Element, public model: User) {
+    this.bindModel();
+  }
+
+  bindModel(): void {
+    this.model.on('change', () => {
+      this.render();
+    });
+  }
 
   eventsMap(): { [key: string]: () => void } {
     return {
@@ -12,7 +20,6 @@ class UserForm {
 
   setAgeOnClick = (): void => {
     this.model.setRandomAge();
-    this.render();
   };
 
   setNameOnClick = (): void => {
@@ -20,7 +27,6 @@ class UserForm {
     const name = inputElement?.value;
 
     this.model.set({ name });
-    this.render();
   };
 
   bindEvents(fragment: DocumentFragment): void {

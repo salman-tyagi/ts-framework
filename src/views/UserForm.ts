@@ -1,8 +1,7 @@
-import User from '../models/User';
+import View from './View';
+import User, { UserProps } from '../models/User';
 
-class UserForm {
-  
-
+class UserForm extends View<User, UserProps> {
   eventsMap(): { [key: string]: () => void } {
     return {
       'click:.set-age': this.setAgeOnClick,
@@ -21,8 +20,6 @@ class UserForm {
     this.model.set({ name });
   };
 
- 
-
   template(): string {
     return `
       <div>
@@ -35,8 +32,6 @@ class UserForm {
       </div>
     `;
   }
-
-  
 }
 
 export default UserForm;
